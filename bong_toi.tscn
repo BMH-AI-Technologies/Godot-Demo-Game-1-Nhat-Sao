@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://vat_roi.gd" id="1"]
+[sub_resource type="CircleShape2D" id="Shape"]
+radius = 16.0
+
+[node name="BongToi" type="Area2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1")
+nguy_hiem = true
+toc_do = 125.0
+
+[node name="Hinh" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0,-20,15,-12,19,4,8,18,-10,16,-20,0,-12,-15)
+color = Color(0.69,0.42,0.78,1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Shape")

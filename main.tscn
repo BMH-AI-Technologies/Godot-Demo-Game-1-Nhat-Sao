@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://athena.tscn" id="2"]
+[ext_resource type="AudioStream" path="res://assets/nhat.wav" id="3"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Athena" parent="." instance=ExtResource("2")]
+position = Vector2(320,300)
+
+[node name="VatThe" type="Node2D" parent="."]
+
+[node name="SinhSao" type="Timer" parent="."]
+wait_time = 0.65
+
+[node name="SinhBong" type="Timer" parent="."]
+wait_time = 1.7
+
+[node name="DongHo" type="Timer" parent="."]
+wait_time = 1.0
+
+[node name="AmNhat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
+volume_db = -12.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="GiaoDien" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Le" type="MarginContainer" parent="HUD/GiaoDien"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+
+[node name="ThongSo" type="HBoxContainer" parent="HUD/GiaoDien/Le"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Diem" type="Label" parent="HUD/GiaoDien/Le/ThongSo"]
+layout_mode = 2
+text = "Điểm: 0"
+
+[node name="ThoiGian" type="Label" parent="HUD/GiaoDien/Le/ThongSo"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Còn: 30s"
+
+[node name="KyLuc" type="Label" parent="HUD/GiaoDien/Le/ThongSo"]
+layout_mode = 2
+text = "Kỷ lục: 0"
+
+[node name="Menu" type="CenterContainer" parent="HUD/GiaoDien"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cot" type="VBoxContainer" parent="HUD/GiaoDien/Menu"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TieuDe" type="Label" parent="HUD/GiaoDien/Menu/Cot"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Athena và Đêm Sao"
+horizontal_alignment = 1
+
+[node name="HuongDan" type="Label" parent="HUD/GiaoDien/Menu/Cot"]
+layout_mode = 2
+text = "WASD / mũi tên: di chuyển · Shift: chạy\nNhặt sao vàng, tránh bóng tím trong 30 giây."
+horizontal_alignment = 1
+
+[node name="Choi" type="Button" parent="HUD/GiaoDien/Menu/Cot"]
+layout_mode = 2
+text = "Bắt đầu"
